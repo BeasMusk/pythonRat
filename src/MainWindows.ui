@@ -39,6 +39,9 @@
       <property name="contextMenuPolicy">
        <enum>Qt::CustomContextMenu</enum>
       </property>
+      <property name="styleSheet">
+       <string notr="true">selection-background-color: rgb(85, 170, 255);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::Panel</enum>
       </property>

@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
         self.twClient = QtWidgets.QTableWidget(self.centralwidget)
         self.twClient.setFocusPolicy(QtCore.Qt.NoFocus)
         self.twClient.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.twClient.setStyleSheet("selection-background-color: rgb(85, 170, 255);")
         self.twClient.setFrameShape(QtWidgets.QFrame.Panel)
         self.twClient.setFrameShadow(QtWidgets.QFrame.Raised)
         self.twClient.setLineWidth(0)

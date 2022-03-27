@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>FileManager</class>
+ <widget class="QMainWindow" name="FileManager">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +12,10 @@
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>scientist.ico</normaloff>scientist.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -45,6 +49,9 @@
       <property name="contextMenuPolicy">
        <enum>Qt::CustomContextMenu</enum>
       </property>
+      <property name="styleSheet">
+       <string notr="true">selection-background-color: rgb(0, 170, 255);</string>
+      </property>
       <property name="frameShape">
        <enum>QFrame::NoFrame</enum>
       </property>
@@ -57,11 +64,14 @@
       <property name="selectionBehavior">
        <enum>QAbstractItemView::SelectRows</enum>
       </property>
+      <property name="showGrid">
+       <bool>false</bool>
+      </property>
       <property name="gridStyle">
-       <enum>Qt::NoPen</enum>
+       <enum>Qt::CustomDashLine</enum>
       </property>
       <property name="rowCount">
-       <number>1</number>
+       <number>0</number>
       </property>
       <attribute name="horizontalHeaderMinimumSectionSize">
        <number>20</number>
@@ -84,7 +94,6 @@
       <attribute name="verticalHeaderStretchLastSection">
        <bool>false</bool>
       </attribute>
-      <row/>
       <column>
        <property name="text">
         <string>Name</string>
